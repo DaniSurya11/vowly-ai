@@ -32,6 +32,7 @@ export default function CreateInvitation() {
     }
     setError(false);
     setStep(step + 1);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const triggerError = () => {
@@ -59,6 +60,7 @@ export default function CreateInvitation() {
         } else {
           clearInterval(interval);
           setStep(5);
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }, 1500);
       return () => clearInterval(interval);
@@ -66,9 +68,7 @@ export default function CreateInvitation() {
   }, [step]);
 
   return (
-    <div className="relative min-h-[100dvh] bg-black text-white flex flex-col overflow-x-hidden pt-28 pb-12">
-      {/* Ambient Background */}
-      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vw] max-w-[800px] aspect-square bg-[radial-gradient(circle,rgba(161,98,7,0.15)_0%,transparent_70%)] rounded-full pointer-events-none" />
+    <div className="relative min-h-[100dvh] w-full max-w-[100vw] bg-black text-white flex flex-col overflow-x-hidden pt-24 md:pt-28 pb-[calc(3rem+env(safe-area-inset-bottom))]">
 
       {/* Progress Bar */}
       {step < 4 && (
@@ -82,17 +82,17 @@ export default function CreateInvitation() {
         </div>
       )}
 
-      <div className="relative z-10 w-full max-w-2xl px-6 mx-auto my-auto">
-        {/* Back Button */}
-        {step > 1 && step < 4 && (
-          <button 
-            onClick={() => setStep(step - 1)}
-            className="absolute -top-16 left-6 flex items-center gap-2 text-neutral-500 hover:text-white transition-colors text-sm font-medium"
-          >
-            <ChevronLeft className="w-4 h-4" /> Back
-          </button>
-        )}
+      {/* Fixed Back Button */}
+      {step > 1 && step < 4 && (
+        <button 
+          onClick={() => { setStep(step - 1); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+          className="fixed top-24 left-6 md:left-8 z-40 flex items-center gap-1.5 text-neutral-400 hover:text-white transition-colors text-[10px] font-semibold uppercase tracking-widest bg-black/60 backdrop-blur-md py-1.5 px-3 rounded-full border border-white/10 hover:border-white/30 shadow-lg"
+        >
+          <ChevronLeft className="w-3 h-3" /> Back
+        </button>
+      )}
 
+      <div className="relative z-10 w-full max-w-2xl px-6 mx-auto my-auto">
         <AnimatePresence mode="wait">
           
           {/* STEP 1: BASIC INFO */}
@@ -166,28 +166,34 @@ export default function CreateInvitation() {
               className="flex flex-col gap-8"
             >
               <div className="text-center">
-                <p className="text-yellow-500 uppercase tracking-[0.2em] text-xs mb-4">Step 02</p>
-                <h1 className="playfair text-4xl md:text-5xl">Visual Direction</h1>
-                <p className="text-neutral-400 mt-4 text-sm">Select the cinematic style that matches your dream.</p>
+                <p className="text-yellow-500 uppercase tracking-[0.2em] text-[10px] mb-2">Step 02</p>
+                <h1 className="playfair text-3xl md:text-5xl">Visual Direction</h1>
+                <p className="text-neutral-400 mt-2 text-xs md:text-sm">Select the cinematic style that matches your dream.</p>
               </div>
 
-              <motion.div animate={error ? { x: [-10, 10, -8, 8, -5, 5, 0] } : {}} className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left mt-4">
+              <motion.div animate={error ? { x: [-10, 10, -8, 8, -5, 5, 0] } : {}} className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 text-left mt-2 md:mt-4">
               {[
-                "Royal Gold", "Soft Romance", "Dark Luxury", "Garden Party", "Minimal Elegant"
+                { name: "Royal Gold", color: "from-yellow-400 to-yellow-700" },
+                { name: "Soft Romance", color: "from-rose-300 to-rose-600" },
+                { name: "Dark Luxury", color: "from-neutral-800 to-black" },
+                { name: "Garden Party", color: "from-emerald-700 to-emerald-950" },
+                { name: "Minimal Elegant", color: "from-stone-200 to-stone-400" },
+                { name: "Vintage Film", color: "from-orange-900 to-stone-900" },
               ].map((t) => (
                 <button
-                  key={t}
-                  onClick={() => { setError(false); setData({ ...data, theme: t }); }}
-                  className={`p-5 rounded-2xl border transition-all text-left group ${data.theme === t ? 'border-yellow-500 bg-yellow-500/10' : 'border-white/10 bg-white/5 hover:border-yellow-500/50 hover:bg-white/10'}`}
+                  key={t.name}
+                  onClick={() => { setError(false); setData({ ...data, theme: t.name }); }}
+                  className={`p-3 md:p-4 rounded-xl md:rounded-2xl border transition-all text-left group flex flex-col gap-2 md:gap-3 ${data.theme === t.name ? 'border-yellow-500 bg-yellow-500/10' : 'border-white/10 bg-white/5 hover:border-yellow-500/50 hover:bg-white/10'}`}
                 >
-                  <h3 className={`playfair text-lg ${data.theme === t ? 'text-yellow-500' : 'text-white'}`}>{t}</h3>
+                  <div className={`w-full h-12 md:h-20 rounded-md md:rounded-lg bg-gradient-to-br ${t.color} opacity-90 group-hover:opacity-100 transition-opacity border border-white/5`} />
+                  <h3 className={`playfair text-xs md:text-base ${data.theme === t.name ? 'text-yellow-500' : 'text-white'}`}>{t.name}</h3>
                 </button>
               ))}
               </motion.div>
 
               <button 
                 onClick={validateAndNext}
-                className="flex items-center justify-center gap-2 text-black bg-yellow-500 hover:bg-yellow-400 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-xs transition-colors mt-4"
+                className="flex items-center justify-center gap-2 text-black bg-yellow-500 hover:bg-yellow-400 py-3.5 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs transition-colors mt-2 md:mt-4"
               >
                 Continue <ChevronRight className="w-4 h-4" />
               </button>
@@ -222,7 +228,7 @@ export default function CreateInvitation() {
                       <button
                         key={m}
                         onClick={() => { setError(false); setData({ ...data, music: m }); }}
-                        className={`px-5 py-2.5 rounded-full border text-sm transition-colors ${data.music === m ? 'border-yellow-500 bg-yellow-500/20 text-yellow-500' : 'border-white/10 text-neutral-400 hover:border-white/40'}`}
+                        className={`min-h-[44px] flex items-center justify-center px-5 py-2.5 rounded-full border text-sm transition-colors ${data.music === m ? 'border-yellow-500 bg-yellow-500/20 text-yellow-500' : 'border-white/10 text-neutral-400 hover:border-white/40'}`}
                       >
                         {m}
                       </button>
@@ -241,7 +247,7 @@ export default function CreateInvitation() {
                       <button
                         key={a}
                         onClick={() => { setError(false); setData({ ...data, atmosphere: a }); }}
-                        className={`px-5 py-2.5 rounded-full border text-sm transition-colors ${data.atmosphere === a ? 'border-yellow-500 bg-yellow-500/20 text-yellow-500' : 'border-white/10 text-neutral-400 hover:border-white/40'}`}
+                        className={`min-h-[44px] flex items-center justify-center px-5 py-2.5 rounded-full border text-sm transition-colors ${data.atmosphere === a ? 'border-yellow-500 bg-yellow-500/20 text-yellow-500' : 'border-white/10 text-neutral-400 hover:border-white/40'}`}
                       >
                         {a}
                       </button>
@@ -252,7 +258,7 @@ export default function CreateInvitation() {
 
               <button 
                 onClick={validateAndNext}
-                className="group relative overflow-hidden flex items-center justify-center gap-3 rounded-full border border-yellow-500/50 bg-black/60 backdrop-blur-xl py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white shadow-[0_0_30px_rgba(212,175,55,0.2)] transition-all mt-8"
+                className="group relative overflow-hidden flex items-center justify-center gap-3 rounded-full border border-yellow-500/40 bg-black/60 backdrop-blur-xl py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all mt-8"
               >
                 <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover:text-black">
                   Generate My Wedding <Sparkles className="w-4 h-4" />
@@ -326,7 +332,7 @@ export default function CreateInvitation() {
 
               <Link 
                 href="/invite/preview"
-                className="group relative overflow-hidden flex items-center gap-2 border border-yellow-500/50 bg-black px-10 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-xs transition-all shadow-[0_4px_20px_rgba(212,175,55,0.2)]"
+                className="group relative overflow-hidden flex items-center gap-2 border border-yellow-500/40 bg-black px-10 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-xs transition-all"
               >
                 <span className="relative z-10 flex items-center gap-2 transition-colors duration-300 group-hover:text-black">
                   View Masterpiece <ChevronRight className="w-5 h-5" />

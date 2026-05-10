@@ -13,6 +13,31 @@ body {
   color: var(--foreground);
   font-family: var(--font-inter);
   overflow-x: hidden;
+  /* Safe area for notched iPhones */
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Ensure backdrop-filter works on Safari */
+.backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+/* iOS Safari specific fixes */
+input, button, select, textarea {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Mobile Marquee Animation for Performance */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee-mobile {
+  animation: marquee 15s linear infinite;
+  will-change: transform;
 }
 
 .playfair {

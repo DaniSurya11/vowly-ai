@@ -18,7 +18,7 @@ export default function DashboardPage() {
   ];
 
   return (
-    <div className="min-h-[100dvh] bg-black text-white pt-32 pb-24 px-6">
+    <div className="min-h-[100dvh] bg-black text-white pt-32 pb-[calc(6rem+env(safe-area-inset-bottom))] px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

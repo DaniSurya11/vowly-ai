@@ -81,10 +81,15 @@ export default function GuestInvitationPreview() {
             </div>
             <div>
               <label className="block text-[10px] uppercase tracking-[0.2em] text-yellow-500 mb-2 ml-4">Will you attend?</label>
-              <select className="w-full bg-black/50 border border-white/10 rounded-full px-6 py-4 text-white focus:outline-none focus:border-yellow-500 transition-colors appearance-none cursor-pointer">
-                <option>Joyfully Accepts</option>
-                <option>Regretfully Declines</option>
-              </select>
+              <div className="relative">
+                <select className="w-full bg-black/50 border border-white/10 rounded-full px-6 py-4 text-white focus:outline-none focus:border-yellow-500 transition-colors appearance-none cursor-pointer">
+                  <option>Joyfully Accepts</option>
+                  <option>Regretfully Declines</option>
+                </select>
+                <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-neutral-400">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </div>
+              </div>
             </div>
             <button className="mt-4 w-full bg-yellow-500 text-black rounded-full px-6 py-4 text-xs font-bold uppercase tracking-[0.2em] hover:bg-yellow-400 transition-colors">
               Send Reply

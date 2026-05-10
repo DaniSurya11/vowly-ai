@@ -53,25 +53,10 @@ export default function Navbar() {
       >
         
         {/* Left: Logo */}
-        <Link href="/" className="flex items-center gap-3 group relative z-50">
-          <svg 
-            width="28" 
-            height="28" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="1.2" 
-            className="text-[#D4AF37] transition-transform group-hover:scale-110"
-          >
-            <path d="M12 2C12 2 15 7 15 12C15 17 12 22 12 22C12 22 9 17 9 12C9 7 12 2 12 2Z" />
-            <path d="M2 12C2 12 7 9 12 9C17 9 22 12 22 12C22 12 17 15 12 15C7 15 2 12 2 12Z" />
-            <circle cx="12" cy="12" r="2" fill="currentColor" />
-            <path d="M5 5L8 8" strokeOpacity="0.5"/>
-            <path d="M19 19L16 16" strokeOpacity="0.5"/>
-            <path d="M19 5L16 8" strokeOpacity="0.5"/>
-            <path d="M5 19L8 16" strokeOpacity="0.5"/>
-          </svg>
-          <span className="playfair text-xl tracking-widest text-[#D4AF37]">VOWLY AI</span>
+        <Link href="/" className="flex items-center group relative z-50">
+          <span className="playfair text-xl tracking-[0.25em] text-white transition-colors duration-300 group-hover:text-neutral-300">
+            VOWLY
+          </span>
         </Link>
 
         {/* Middle: Links */}
@@ -119,7 +104,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { delay: 0.3 } }}
-            className="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-start pt-32 pb-12 overflow-y-auto lg:hidden"
+            className="fixed inset-0 z-40 h-[100dvh] w-[100dvw] bg-black/95 backdrop-blur-xl flex flex-col items-center pt-[100px] pb-[calc(3rem+env(safe-area-inset-bottom))] overflow-y-auto lg:hidden"
           >
             <motion.div 
               initial="closed"
@@ -129,7 +114,7 @@ export default function Navbar() {
                 open: { transition: { staggerChildren: 0.05, delayChildren: 0.1 } },
                 closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } }
               }}
-              className="flex flex-col items-center gap-10 w-full min-h-max"
+              className="flex flex-col items-center gap-10 w-full my-auto"
             >
               {navLinks.map((link) => (
                 <motion.div
@@ -148,20 +133,7 @@ export default function Navbar() {
                   </Link>
                 </motion.div>
               ))}
-              <motion.div
-                variants={{
-                  open: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.76, 0, 0.24, 1] } },
-                  closed: { opacity: 0, y: 20, transition: { duration: 0.3 } }
-                }}
-              >
-                <Link 
-                  href="/create" 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="mt-6 sm:hidden bg-[#E3C290] text-black px-10 py-4 rounded-full font-semibold text-lg shadow-[0_8px_30px_rgba(227,194,144,0.15)] hover:bg-[#D4AF37] transition-colors inline-block"
-                >
-                  Get Started
-                </Link>
-              </motion.div>
+
               {/* Mobile Footer Extra Links */}
               <motion.div
                 variants={{

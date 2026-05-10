@@ -52,7 +52,7 @@ export default function PricingPage() {
   ];
 
   return (
-    <div className="relative min-h-[100dvh] bg-black text-white pt-32 pb-24 overflow-hidden">
+    <div className="relative min-h-[100dvh] bg-black text-white pt-32 pb-24 overflow-x-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(161,98,7,0.1)_0%,transparent_50%)] pointer-events-none" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6">

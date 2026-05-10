@@ -1,22 +1,23 @@
 "use client";
 
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import Link from "next/link";
 import MagneticButton from "@/components/MagneticButton";
-import { Sparkles } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
   const { scrollY, scrollYProgress } = useScroll();
-  const [showStickyCTA, setShowStickyCTA] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 400) {
-      setShowStickyCTA(true);
-    } else {
-      setShowStickyCTA(false);
-    }
-  });
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+
+
+  if (!mounted) return <div className="min-h-[100dvh] bg-black" />;
+
   return (
     <main className="relative min-h-[100dvh] overflow-hidden bg-black text-white">
 
@@ -26,38 +27,7 @@ export default function Home() {
         style={{ scaleX: scrollYProgress }}
       />
 
-      {/* Luxury Glow */}
-      <div className="absolute left-1/2 top-[1200px] h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(161,98,7,0.15)_0%,transparent_70%)] pointer-events-none" />
 
-      {/* Workflow Glow */}
-      <div className="absolute right-[-200px] top-[2200px] h-[600px] w-[600px] rounded-full bg-[radial-gradient(circle,rgba(161,98,7,0.15)_0%,transparent_70%)] pointer-events-none" />
-
-      {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => {
-          const top = `${(i * 13) % 100}%`;
-          const left = `${(i * 17) % 100}%`;
-          const duration = `${5 + (i % 10)}s`;
-
-          return (
-            <div
-              key={i}
-              className="absolute h-1 w-1 rounded-full bg-yellow-400/40 blur-[1px]"
-              style={{
-                top,
-                left,
-                animation: `float ${duration} linear infinite`,
-              }}
-            />
-          );
-        })}
-      </div>
-
-      {/* Background Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#8b5a2b33,transparent_60%)]" />
-
-      {/* Gold Glow */}
-      <div className="absolute top-[-120px] left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(161,98,7,0.2)_0%,transparent_70%)] pointer-events-none" />
 
       {/* HERO SECTION */}
       <section className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center px-6 text-center pt-28 pb-12">
@@ -66,20 +36,20 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          className="mb-4 text-sm uppercase tracking-[0.3em] text-yellow-500"
+          className="mb-2 md:mb-4 text-[10px] sm:text-sm uppercase tracking-[0.2em] sm:tracking-[0.3em] text-yellow-500 whitespace-nowrap"
         >
           AI Wedding Invitation Generator
         </motion.p>
 
-        <h1 className="playfair max-w-5xl text-5xl font-semibold leading-[0.9] md:leading-[0.9] md:text-8xl flex flex-col items-center tracking-tight">
+        <h1 className="playfair max-w-5xl text-4xl sm:text-5xl font-semibold leading-[1.1] md:leading-[0.9] md:text-8xl flex flex-col items-center tracking-tight">
           <span className="block overflow-hidden pb-1">
             <motion.span
               initial={{ y: "120%", rotate: 3 }}
               animate={{ y: 0, rotate: 0 }}
               transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-              className="block origin-top-left"
+              className="block origin-top-left text-center"
             >
-              Your Love Story,
+              Your Love Story
             </motion.span>
           </span>
           <span className="block overflow-visible mt-0 md:-mt-2">
@@ -98,7 +68,7 @@ export default function Home() {
                 initial={{ scale: 0.5, opacity: 0, filter: "blur(12px)" }}
                 animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
                 transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1], delay: 0.4 }}
-                className="inline-block perspective-[1000px]"
+                className="inline-block perspective-[1000px] will-change-transform will-change-filter"
               >
                 <motion.span
                   animate={{ rotateY: [0, 360] }}
@@ -125,7 +95,7 @@ export default function Home() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.7 }}
           transition={{ delay: 0.3, duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-          className="mt-8 max-w-xl text-neutral-400 md:text-lg"
+          className="mt-8 max-w-xl text-neutral-400 md:text-lg drop-shadow-md"
         >
           Create cinematic wedding invitations with AI-generated themes,
           romantic visuals, elegant motion, and personalized storytelling.
@@ -159,14 +129,14 @@ export default function Home() {
       </div>
 
       {/* HOW IT WORKS */}
-      <section className="relative z-10 px-6 py-20 md:py-32">
+      <section className="relative z-10 px-6 py-16 md:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="mb-24 text-center">
             <p className="mb-4 text-sm uppercase tracking-[0.3em] text-yellow-500">
               AI Wedding Workflow
             </p>
             <h2 className="playfair text-5xl leading-tight md:text-7xl">
-              Designed By AI,
+              Designed By AI
               <br />
               Personalized For You
             </h2>
@@ -217,7 +187,7 @@ export default function Home() {
       </section>
 
       {/* SHOWCASE SECTION */}
-      <section className="relative z-10 px-6 py-20 md:py-32">
+      <section className="relative z-10 px-6 py-16 md:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="mb-20 text-center">
             <p className="mb-4 text-sm uppercase tracking-[0.3em] text-yellow-500">
@@ -230,20 +200,15 @@ export default function Home() {
             </h2>
           </div>
           <div className="relative">
-            {/* Mobile Marquee */}
-            <div className="sm:hidden flex overflow-hidden -mx-6 w-[calc(100%+3rem)] mask-edges">
-              <motion.div
-                animate={{ x: [0, "-50%"] }}
-                transition={{ repeat: Infinity, ease: "linear", duration: 15 }}
-                className="flex w-max gap-4 px-4"
-              >
+            {/* Mobile Swipeable Carousel */}
+            <div className="sm:hidden flex w-[calc(100%+3rem)] -mx-6 overflow-x-auto snap-x snap-mandatory px-6 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+              <div className="flex gap-4 w-max pr-6">
                 {[
-                  "Dark Luxury", "Soft Romance", "Royal Gold",
                   "Dark Luxury", "Soft Romance", "Royal Gold",
                 ].map((theme, i) => (
                   <div
                     key={i}
-                    className="w-[280px] shrink-0 group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-500 hover:border-yellow-500/40"
+                    className="w-[280px] shrink-0 snap-center group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-500 hover:border-yellow-500/40"
                   >
                     <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="relative z-10 flex flex-col items-start text-left">
@@ -257,7 +222,7 @@ export default function Home() {
                     </div>
                   </div>
                 ))}
-              </motion.div>
+              </div>
             </div>
 
             {/* Desktop Grid */}
@@ -289,7 +254,7 @@ export default function Home() {
       </section>
 
       {/* CINEMATIC PREVIEW */}
-      <section className="relative z-10 px-6 py-20 md:py-32">
+      <section className="relative z-10 px-6 py-16 md:py-32">
         <div className="mx-auto grid max-w-7xl items-center gap-20 md:grid-cols-2">
           {/* LEFT */}
           <div>
@@ -307,10 +272,10 @@ export default function Home() {
               and AI-generated visual storytelling.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
-              <button className="rounded-full bg-yellow-500 px-7 py-4 font-medium text-black transition-all hover:scale-105">
+              <button className="rounded-full bg-yellow-500 px-7 py-4 font-medium text-black transition-all hover:scale-105 active:scale-95">
                 Try Vowly AI
               </button>
-              <button className="rounded-full border border-white/10 px-7 py-4 text-white transition-all hover:border-yellow-500/40">
+              <button className="rounded-full border border-white/10 px-7 py-4 text-white transition-all hover:border-yellow-500/40 active:scale-95">
                 View Themes
               </button>
             </div>
@@ -351,62 +316,80 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="relative z-10 px-6 py-20 md:py-32 bg-black/40 border-y border-white/5">
+      <section className="relative z-10 px-6 py-16 md:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="mb-20 text-center">
             <p className="mb-4 text-sm uppercase tracking-[0.3em] text-yellow-500">
               Loved by Couples
             </p>
-            <h2 className="playfair text-4xl md:text-6xl">
+            <h2 className="playfair text-2xl sm:text-4xl md:text-6xl whitespace-nowrap">
               Emotional & Unforgettable
             </h2>
           </div>
-          <div className="flex flex-col md:grid md:grid-cols-3 gap-6 md:gap-8 w-full max-w-6xl mx-auto px-2">
-            {[
-              {
-                quote: "It felt like watching a luxury movie trailer of our love story. Our guests were blown away.",
-                name: "Sarah & Michael",
-                theme: "Royal Gold"
-              },
-              {
-                quote: "The AI understood our vibe perfectly. The subtle animations and music brought tears to my eyes.",
-                name: "Elena & David",
-                theme: "Soft Romance"
-              },
-              {
-                quote: "We didn't know anything about design, but Vowly made it look like we hired an expensive agency.",
-                name: "Jessica & Tom",
-                theme: "Dark Luxury"
-              }
-            ].map((testi, i) => (
-              <div 
-                key={i} 
-                className={`group relative border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-xl transition-all duration-500 hover:border-yellow-500/40 hover:-translate-y-2 w-[90%] md:w-full ${
-                  i % 2 === 1 
-                    ? 'self-end md:self-auto rounded-[24px] rounded-tr-[4px] md:rounded-[32px]' 
-                    : 'self-start md:self-auto rounded-[24px] rounded-tl-[4px] md:rounded-[32px]'
-                }`}
-              >
-                <div className="mb-4 md:mb-6 flex gap-1 text-yellow-500">
-                  {Array.from({ length: 5 }).map((_, j) => (
-                    <svg key={j} className="h-4 w-4 md:h-5 md:w-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-                  ))}
+          <div className="overflow-hidden sm:overflow-visible -mx-6 sm:mx-0 w-[calc(100%+3rem)] sm:w-full">
+            <div className="flex w-max sm:w-full animate-marquee-mobile sm:animate-none hover:[animation-play-state:paused] active:[animation-play-state:paused] sm:grid sm:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto px-6 sm:px-2 pb-8">
+              {[
+                {
+                  quote: "It felt like watching a luxury movie trailer of our love story. Our guests were blown away.",
+                  name: "Sarah & Michael",
+                  theme: "Royal Gold"
+                },
+                {
+                  quote: "The AI understood our vibe perfectly. The subtle animations and music brought tears to my eyes.",
+                  name: "Elena & David",
+                  theme: "Soft Romance"
+                },
+                {
+                  quote: "We didn't know anything about design, but Vowly made it look like we hired an expensive agency.",
+                  name: "Jessica & Tom",
+                  theme: "Dark Luxury"
+                },
+                // Duplicated for infinite horizontal scroll on mobile
+                {
+                  quote: "It felt like watching a luxury movie trailer of our love story. Our guests were blown away.",
+                  name: "Sarah & Michael",
+                  theme: "Royal Gold",
+                  dup: true
+                },
+                {
+                  quote: "The AI understood our vibe perfectly. The subtle animations and music brought tears to my eyes.",
+                  name: "Elena & David",
+                  theme: "Soft Romance",
+                  dup: true
+                },
+                {
+                  quote: "We didn't know anything about design, but Vowly made it look like we hired an expensive agency.",
+                  name: "Jessica & Tom",
+                  theme: "Dark Luxury",
+                  dup: true
+                }
+              ].map((testi, i) => (
+                <div
+                  key={i}
+                  className={`group relative border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-xl transition-all duration-500 hover:border-yellow-500/40 hover:-translate-y-2 shrink-0 w-[280px] sm:w-full ${testi.dup ? 'sm:hidden ' : ''}${i % 2 === 1
+                    ? 'rounded-[24px] rounded-tr-[4px] md:rounded-[32px]'
+                    : 'rounded-[24px] rounded-tl-[4px] md:rounded-[32px]'
+                    }`}
+                >
+                  <div className="mb-4 md:mb-6 flex gap-1 text-yellow-500">
+                    {Array.from({ length: 5 }).map((_, j) => (
+                      <svg key={j} className="h-4 w-4 md:h-5 md:w-5 fill-current" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" /></svg>
+                    ))}
+                  </div>
+                  <p className="text-base leading-relaxed md:text-lg md:leading-relaxed text-neutral-300 mb-6 md:mb-8">&quot;{testi.quote}&quot;</p>
+                  <div>
+                    <p className="playfair text-lg md:text-xl text-white">{testi.name}</p>
+                    <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-yellow-500 mt-1">{testi.theme}</p>
+                  </div>
                 </div>
-                <p className="text-base leading-relaxed md:text-lg md:leading-relaxed text-neutral-300 mb-6 md:mb-8">&quot;{testi.quote}&quot;</p>
-                <div>
-                  <p className="playfair text-lg md:text-xl text-white">{testi.name}</p>
-                  <p className="text-[10px] md:text-xs uppercase tracking-[0.2em] text-yellow-500 mt-1">{testi.theme}</p>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA SECTION */}
-      <section className="relative z-10 px-6 py-24 md:py-40 text-center">
-        <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle,rgba(161,98,7,0.15)_0%,transparent_70%)] pointer-events-none" />
-        
+      <section className="relative z-10 px-6 py-20 md:py-40 text-center">
         <div className="relative mx-auto max-w-4xl">
           <h2 className="playfair text-5xl leading-tight md:text-8xl">
             Begin Your
@@ -417,7 +400,7 @@ export default function Home() {
             Join the platform to experience the future of wedding invitations.
             Cinematic, luxurious, and uniquely yours.
           </p>
-          
+
           <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
             <MagneticButton>
               <Link
@@ -448,12 +431,12 @@ export default function Home() {
               <button className="text-yellow-500 uppercase tracking-wider text-xs font-bold hover:text-yellow-400 transition-colors ml-4">Join</button>
             </div>
           </div>
-          
+
           {/* MASSIVE WORDMARK */}
           <h2 className="playfair text-[20vw] leading-none tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-600 to-black select-none pointer-events-none w-full text-center">
             VOWLY
           </h2>
-          
+
           <div className="w-full flex flex-col-reverse md:flex-row justify-between items-center gap-6 mt-10 md:mt-0 pt-10 border-t border-white/5 text-[10px] md:text-xs tracking-widest uppercase text-neutral-600">
             <p>© 2024 Vowly AI. All rights reserved.</p>
             <div className="flex gap-6 md:gap-8">
@@ -479,30 +462,6 @@ export default function Home() {
         />
       </div>
 
-      {/* Mobile Sticky CTA */}
-      <AnimatePresence>
-        {showStickyCTA && (
-          <div className="fixed bottom-0 left-0 right-0 z-50 sm:hidden w-full px-6 pb-6 pt-16 flex justify-center pointer-events-none bg-gradient-to-t from-black via-black/80 to-transparent">
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }}
-              transition={{ duration: 0.4 }}
-              className="pointer-events-auto"
-            >
-              <Link
-                href="/create"
-                className="group relative overflow-hidden flex items-center gap-3 rounded-full border border-yellow-500/30 bg-black/80 backdrop-blur-xl px-8 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white shadow-2xl transition-all"
-              >
-                <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover:text-black">
-                  Create Yours <Sparkles className="w-5 h-5" />
-                </span>
-                <div className="absolute top-0 left-0 z-0 h-full w-0 bg-yellow-500 transition-all duration-500 ease-[cubic-bezier(0.76,0,0.24,1)] group-hover:w-full" />
-              </Link>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
     </main>
   );
