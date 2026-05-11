@@ -95,7 +95,7 @@ export const VintageFilmDivider = ({ className = "" }: { className?: string }) =
     className={`w-full h-auto ${className}`} 
     xmlns="http://www.w3.org/2000/svg"
     animate={{ y: [0, -2, 1, 0, 2, -1, 0] }}
-    transition={{ duration: 0.2, repeat: Infinity, ease: "steps(3)" }}
+    transition={{ duration: 0.2, repeat: Infinity, ease: "linear" }}
   >
     {/* Filmstrip Edges */}
     <line x1="0" y1="5" x2="160" y2="5" stroke="currentColor" strokeWidth="1" opacity="0.4" strokeDasharray="4 4">
@@ -136,7 +136,7 @@ export const VintageFilmParticles = () => (
         transition={{
           duration: Math.random() * 0.5 + 0.1,
           repeat: Infinity,
-          ease: "steps(3)",
+          ease: "linear",
           delay: Math.random() * 2,
         }}
       />
@@ -159,7 +159,7 @@ export const VintageFilmParticles = () => (
         transition={{
           duration: Math.random() * 0.2 + 0.1,
           repeat: Infinity,
-          ease: "steps(2)",
+          ease: "linear",
           delay: Math.random() * 3,
         }}
       />
