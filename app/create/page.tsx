@@ -1,16 +1,29 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, ChevronLeft, Sparkles, Music, Wind, Heart } from "lucide-react";
+import { ChevronRight, ChevronLeft, Sparkles, Music, Wind, Heart, LucideProps } from "lucide-react";
 import Link from "next/link";
+
+/* ── Soul Component Imports ── */
+import { RoyalGoldPattern, RoyalGoldParticles, RoyalGoldDecorator, RoyalGoldIcon } from "@/components/theme-souls/RoyalGoldSoul";
+import { SoftRomancePattern, SoftRomanceParticles, SoftRomanceDecorator, SoftRomanceIcon } from "@/components/theme-souls/SoftRomanceSoul";
+import { DarkLuxuryPattern, DarkLuxuryParticles, DarkLuxuryDecorator, DarkLuxuryIcon } from "@/components/theme-souls/DarkLuxurySoul";
+import { GardenPartyPattern, GardenPartyParticles, GardenPartyDecorator, GardenPartyIcon } from "@/components/theme-souls/GardenPartySoul";
+import { MinimalElegantPattern, MinimalElegantParticles, MinimalElegantDecorator, MinimalElegantIcon } from "@/components/theme-souls/MinimalElegantSoul";
+import { VintageFilmPattern, VintageFilmParticles, VintageFilmDecorator, VintageFilmIcon } from "@/components/theme-souls/VintageFilmSoul";
+
 
 /* ── Full atmosphere config per theme (Safari-optimized: vibrant, sharp, performant) ── */
 const themeAtmosphere: Record<string, {
   pageBg: string; glowColor: string; accent: string; accentBorder: string;
   btnBg: string; btnText: string; previewBg: string; previewBorder: string;
   particleColor: string; labelColor: string; swatch: string;
-  image: string; bgImage?: string; previewImage?: string; aiMsg: string[];
+  image: string; bgImage?: string; previewImage?: string; mockup: string; aiMsg: string[];
+  Pattern: React.ComponentType;
+  Particles: React.ComponentType;
+  Decorator: React.ComponentType<{ className?: string }>;
+  Icon: React.ComponentType<LucideProps>;
 }> = {
   "Royal Gold": {
     pageBg: "#100c04", glowColor: "rgba(217,158,0,0.40)", accent: "text-amber-400",
@@ -19,7 +32,9 @@ const themeAtmosphere: Record<string, {
     particleColor: "rgba(217,158,0,0.25)", labelColor: "text-amber-500/90",
     swatch: "from-amber-400 to-amber-700", image: "/themes/card-royal-gold.png",
     bgImage: "/themes/bg-royal.png",
+    mockup: "/themes/royal-mockups.svg",
     aiMsg: ["Majestic gold palette detected.", "Matching typography with royal ambiance...", "Crafting opulent visual direction."],
+    Pattern: RoyalGoldPattern, Particles: RoyalGoldParticles, Decorator: RoyalGoldDecorator, Icon: RoyalGoldIcon,
   },
   "Soft Romance": {
     pageBg: "#110a0d", glowColor: "rgba(244,114,130,0.38)", accent: "text-pink-300",
@@ -28,7 +43,9 @@ const themeAtmosphere: Record<string, {
     particleColor: "rgba(244,114,130,0.22)", labelColor: "text-pink-400/90",
     swatch: "from-pink-300 to-rose-500", image: "/themes/card-soft-romance.png",
     bgImage: "/themes/bg-softromance.png",
+    mockup: "/themes/softromance-mockups.svg",
     aiMsg: ["Soft romantic composition recognized.", "Composing tender romantic atmosphere...", "Weaving ethereal elegance."],
+    Pattern: SoftRomancePattern, Particles: SoftRomanceParticles, Decorator: SoftRomanceDecorator, Icon: SoftRomanceIcon,
   },
   "Dark Luxury": {
     pageBg: "#040406", glowColor: "rgba(180,180,210,0.20)", accent: "text-slate-200",
@@ -37,7 +54,9 @@ const themeAtmosphere: Record<string, {
     particleColor: "rgba(180,180,210,0.12)", labelColor: "text-slate-400",
     swatch: "from-slate-600 to-slate-950", image: "/themes/card-dark-luxury.png",
     bgImage: "/themes/bg-darkluxury.png",
+    mockup: "/themes/darkluxury-mockups.svg",
     aiMsg: ["Cinematic editorial direction selected.", "Analyzing mysterious visual depth...", "Designing dark editorial experience."],
+    Pattern: DarkLuxuryPattern, Particles: DarkLuxuryParticles, Decorator: DarkLuxuryDecorator, Icon: DarkLuxuryIcon,
   },
   "Garden Party": {
     pageBg: "#080b06", glowColor: "rgba(120,150,90,0.32)", accent: "text-lime-300",
@@ -46,7 +65,9 @@ const themeAtmosphere: Record<string, {
     particleColor: "rgba(120,150,90,0.18)", labelColor: "text-lime-400/80",
     swatch: "from-lime-600/80 to-green-950", image: "/themes/card-garden-party.png",
     bgImage: "/themes/bg-gardenparty.png",
+    mockup: "/themes/gardenparty-mockups.svg",
     aiMsg: ["Luxury botanical atmosphere identified.", "Composing elegant garden aesthetic...", "Crafting organic editorial narrative."],
+    Pattern: GardenPartyPattern, Particles: GardenPartyParticles, Decorator: GardenPartyDecorator, Icon: GardenPartyIcon,
   },
   "Minimal Elegant": {
     pageBg: "#0b0a08", glowColor: "rgba(230,220,200,0.22)", accent: "text-amber-200",
@@ -55,7 +76,9 @@ const themeAtmosphere: Record<string, {
     particleColor: "rgba(230,220,200,0.12)", labelColor: "text-amber-300/70",
     swatch: "from-amber-100 to-stone-300", image: "/themes/card-minimal-elegant.png",
     bgImage: "/themes/bg-minimal-elegant.png",
+    mockup: "/themes/minmal-mockups.svg",
     aiMsg: ["Clean modern aesthetic selected.", "Distilling visual purity...", "Crafting timeless editorial layout."],
+    Pattern: MinimalElegantPattern, Particles: MinimalElegantParticles, Decorator: MinimalElegantDecorator, Icon: MinimalElegantIcon,
   },
   "Vintage Film": {
     pageBg: "#0e0804", glowColor: "rgba(160,80,20,0.35)", accent: "text-orange-300",
@@ -64,7 +87,9 @@ const themeAtmosphere: Record<string, {
     particleColor: "rgba(160,80,20,0.18)", labelColor: "text-orange-400/90",
     swatch: "from-orange-700 to-stone-800", image: "/themes/card-dark-luxury.png",
     bgImage: "/themes/bg-fintagefilm.png",
+    mockup: "/themes/darkluxury-mockups.svg",
     aiMsg: ["Warm cinematic grain detected.", "Analyzing nostalgic color chemistry...", "Composing vintage storytelling tone."],
+    Pattern: VintageFilmPattern, Particles: VintageFilmParticles, Decorator: VintageFilmDecorator, Icon: VintageFilmIcon,
   },
 };
 
@@ -78,6 +103,7 @@ export default function CreateInvitation() {
     names: "",
     date: "",
     location: "",
+    love_story: "",
     theme: "",
     music: "",
     atmosphere: ""
@@ -86,6 +112,30 @@ export default function CreateInvitation() {
   /* ── AI feedback text state ── */
   const [aiText, setAiText] = useState("");
   const [aiTextVisible, setAiTextVisible] = useState(false);
+
+  /* ── Mockup loading state ── */
+  const [mockupLoaded, setMockupLoaded] = useState(false);
+
+  /* ── Theme switch sound effect (Web Audio API) ── */
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const playThemeSound = useCallback(() => {
+    try {
+      if (!audioCtxRef.current) audioCtxRef.current = new AudioContext();
+      const ctx = audioCtxRef.current;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(1320, ctx.currentTime + 0.08);
+      osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.15);
+      gain.gain.setValueAtTime(0.06, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+      osc.start(ctx.currentTime);
+      osc.stop(ctx.currentTime + 0.35);
+    } catch {}
+  }, []);
 
   /* ── Navigation ── */
   const validateAndNext = () => {
@@ -113,12 +163,13 @@ export default function CreateInvitation() {
 
   /* ── AI Processing messages (dynamic based on user choices) ── */
   const loadingMessages = useMemo(() => [
-    "Analyzing your love story...",
-    `Orchestrating the ${data.theme || "cinematic"} aesthetic...`,
-    `Weaving ${data.atmosphere || "emotional"} atmosphere with ${data.music || "melodic"} harmonies...`,
-    "Composing your cinematic narrative...",
-    "Finalizing every luxury detail..."
-  ], [data.theme, data.atmosphere, data.music]);
+    `Crafting ${data.atmosphere?.toLowerCase() || "romantic"} atmosphere...`,
+    `Generating ${data.theme || "cinematic"} wedding direction...`,
+    `Composing ${data.music?.toLowerCase() || "melodic"} soundscape for ${data.names || "your love story"}...`,
+    `Weaving visual narrative with ${data.theme?.toLowerCase() || "elegant"} tones...`,
+    "Breathing life into every detail...",
+    "Your masterpiece is almost ready..."
+  ], [data.theme, data.atmosphere, data.music, data.names]);
   
   const [loadingText, setLoadingText] = useState(loadingMessages[0]);
   const [loadingProgress, setLoadingProgress] = useState(0);
@@ -128,37 +179,83 @@ export default function CreateInvitation() {
       let i = 0;
       setLoadingText(loadingMessages[0]);
       setLoadingProgress(0);
+      
+      let isAiDone = false;
+
+      // Start the AI Analysis API call
+      fetch('/api/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          bride_name: data.names.split('&')[0]?.trim() || data.names,
+          groom_name: data.names.split('&')[1]?.trim() || '',
+          wedding_date: data.date,
+          location: data.location,
+          love_story: data.love_story,
+          theme: data.theme,
+          music: data.music,
+          atmosphere: data.atmosphere
+        })
+      })
+      .then(res => res.json())
+      .then(resData => {
+        if (resData.success) {
+          localStorage.setItem('vowly_ai_result', JSON.stringify({ ...resData.data, inputData: data }));
+        }
+        isAiDone = true;
+      })
+      .catch(err => {
+        console.error("AI API Error:", err);
+        isAiDone = true;
+      });
+
       const interval = setInterval(() => {
         i += 1;
         if (i < loadingMessages.length) {
           setLoadingText(loadingMessages[i]);
           setLoadingProgress((i / loadingMessages.length) * 100);
         } else {
-          clearInterval(interval);
-          setLoadingProgress(100);
-          setTimeout(() => {
-            setStep(5);
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }, 600);
+          if (isAiDone) {
+            clearInterval(interval);
+            setLoadingProgress(100);
+            setTimeout(() => {
+              setStep(5);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }, 600);
+          } else {
+            setLoadingProgress(99); // Wait for AI
+          }
         }
       }, 1800);
       return () => clearInterval(interval);
     }
-  }, [step, loadingMessages]);
+  }, [step, loadingMessages, data]);
 
   /* ── Active atmosphere ── */
   const atmo = data.theme ? themeAtmosphere[data.theme] : null;
 
-  /* ── Handle theme selection with AI feedback ── */
+  /* ── Handle theme selection with AI feedback loop ── */
   const handleThemeSelect = (themeName: string) => {
     setError(false);
+    setMockupLoaded(false);
     setData({ ...data, theme: themeName });
+    playThemeSound();
     const cfg = themeAtmosphere[themeName];
     if (cfg) {
-      const msg = cfg.aiMsg[Math.floor(Math.random() * cfg.aiMsg.length)];
-      setAiText(msg);
+      // Sequential AI messages for immersive feedback
+      setAiText(cfg.aiMsg[0]);
       setAiTextVisible(true);
-      setTimeout(() => setAiTextVisible(false), 2800);
+      let i = 1;
+      const msgInterval = setInterval(() => {
+        if (i < cfg.aiMsg.length) {
+          setAiText(cfg.aiMsg[i]);
+          i++;
+        } else {
+          clearInterval(msgInterval);
+          setTimeout(() => setAiTextVisible(false), 2000);
+        }
+      }, 1400);
+      return () => clearInterval(msgInterval);
     }
   };
 
@@ -166,23 +263,49 @@ export default function CreateInvitation() {
   const activeBgImage = (step === 2 || step === 3) && atmo && atmo.bgImage ? atmo.bgImage : null;
 
   return (
-    <div className="relative min-h-[100dvh] w-full max-w-[100vw] bg-black text-white flex flex-col overflow-x-hidden pt-24 md:pt-28 pb-[calc(3rem+env(safe-area-inset-bottom))]">
+    <div
+      className="relative min-h-[100dvh] w-full max-w-[100vw] text-white flex flex-col overflow-x-hidden pt-24 md:pt-28 pb-[calc(3rem+env(safe-area-inset-bottom))]"
+      style={{ background: atmo ? atmo.pageBg : '#000', transition: 'background 0.8s ease' }}
+    >
 
-      {/* ── Theme Background Image ── */}
+      {/* ── Theme Background Image with blur reveal ── */}
       <AnimatePresence>
         {activeBgImage && (
           <motion.div
             key={activeBgImage}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 0.5 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1, ease: "easeInOut" }}
+            initial={{ opacity: 0, scale: 1.05, filter: "blur(12px)" }}
+            animate={{ opacity: 0.35, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, filter: "blur(8px)" }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
             className="absolute inset-0 z-0 pointer-events-none"
           >
             <img src={activeBgImage} alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/80" />
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* ── Ambient floating particles (CSS-only, Safari-safe) ── */}
+      {atmo && (step === 2 || step === 3) && (
+        <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
+          {[...Array(8)].map((_, i) => (
+            <div key={i} className="ambient-particle" style={{
+              width: 2 + (i % 3), height: 2 + (i % 3),
+              background: atmo.particleColor,
+              left: `${10 + i * 11}%`, bottom: '-5%',
+              animationDuration: `${8 + i * 3}s`,
+              animationDelay: `${i * 1.5}s`,
+            }} />
+          ))}
+        </div>
+      )}
+
+      {/* ── Ambient cinematic glow ── */}
+      {atmo && (step === 2 || step === 3) && (
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full z-0 pointer-events-none opacity-20 cinematic-drift"
+          style={{ background: `radial-gradient(circle, ${atmo.glowColor}, transparent 70%)` }}
+        />
+      )}
 
       {/* ── Progress Bar ── */}
       {step < 4 && (
@@ -258,6 +381,15 @@ export default function CreateInvitation() {
                     className={`w-full bg-white/[0.03] focus:bg-white/[0.07] border ${error && !data.location ? 'border-red-500/60' : 'border-white/10'} hover:border-white/20 rounded-2xl px-6 py-4 text-base text-white placeholder:text-neutral-600 focus:outline-none focus:border-yellow-500/60 transition-all duration-300`}
                   />
                 </div>
+                <div>
+                  <label className="block text-[10px] uppercase tracking-[0.2em] text-yellow-500/80 mb-2 ml-4">In a few words, describe your love story</label>
+                  <textarea 
+                    placeholder="We met at a coffee shop in Paris and fell in love over art and music..." 
+                    value={data.love_story}
+                    onChange={(e) => { setError(false); setData({ ...data, love_story: e.target.value }); }}
+                    className={`w-full bg-white/[0.03] focus:bg-white/[0.07] border border-white/10 hover:border-white/20 rounded-2xl px-6 py-4 text-base text-white placeholder:text-neutral-600 focus:outline-none focus:border-yellow-500/60 transition-all duration-300 min-h-[100px] resize-none`}
+                  />
+                </div>
               </motion.div>
 
               <button 
@@ -330,43 +462,7 @@ export default function CreateInvitation() {
               })}
               </motion.div>
 
-              {/* ── Live Preview + AI Insight ── */}
-              <AnimatePresence mode="wait">
-                {atmo && (
-                  <motion.div
-                    key={data.theme}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
-                    className={`relative overflow-hidden rounded-2xl border ${atmo.previewBorder} ${atmo.previewBg} p-4 md:p-6`}
-                  >
-                    <p className={`text-[9px] uppercase tracking-[0.3em] mb-4 text-center ${atmo.labelColor}`}>Live Preview</p>
-                    <div className="flex gap-3 items-start">
-                      {/* Phone mockup image */}
-                      <div className="flex-1 flex justify-center">
-                        <img 
-                          src={atmo.image} 
-                          alt="Preview" 
-                          className="w-full max-w-[180px] rounded-xl"
-                          loading="lazy"
-                        />
-                      </div>
-                      {/* AI Insight */}
-                      <div className="flex-1 flex flex-col gap-3 pt-2">
-                        <div className="flex items-center gap-1.5">
-                          <Sparkles className={`w-3 h-3 ${atmo.accent}`} />
-                          <span className={`text-[9px] font-semibold uppercase tracking-wider ${atmo.accent}`}>AI Insight</span>
-                        </div>
-                        <p className="text-[10px] md:text-xs text-white/60 leading-relaxed italic">
-                          {aiText || atmo.aiMsg[0]}
-                        </p>
-                        <p className="text-[8px] text-white/30 tracking-wider">Crafting a {data.theme.toLowerCase()} wedding experience.</p>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {/* ── Live Preview removed as requested ── */}
 
               {/* ── Themed CTA Button ── */}
               <button 
@@ -448,7 +544,7 @@ export default function CreateInvitation() {
 
               <button 
                 onClick={validateAndNext}
-                className="group relative overflow-hidden flex items-center justify-center gap-3 rounded-2xl border border-yellow-500/40 bg-black/60 backdrop-blur-xl py-4 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-all mt-4 active:scale-[0.98]"
+                className="group relative overflow-hidden flex items-center justify-center gap-3 rounded-2xl border border-yellow-500/40 bg-black/80 py-4 text-xs font-semibold uppercase tracking-[0.15em] text-white transition-all mt-4 active:scale-[0.98]"
               >
                 <span className="relative z-10 flex items-center gap-3 transition-colors duration-300 group-hover:text-black">
                   Craft Our Story <Sparkles className="w-4 h-4" />

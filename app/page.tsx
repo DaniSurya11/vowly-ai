@@ -166,7 +166,7 @@ export default function Home() {
             ].map((step) => (
               <div
                 key={step.number}
-                className="group relative overflow-hidden rounded-[24px] md:rounded-[32px] border border-white/10 bg-white/5 p-5 md:p-8 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/40"
+                className="group relative overflow-hidden rounded-[24px] md:rounded-[32px] border border-white/10 bg-white/[0.03] p-5 md:p-8 transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/40"
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 <div className="relative z-10">
@@ -204,20 +204,24 @@ export default function Home() {
             <div className="sm:hidden flex w-[calc(100%+3rem)] -mx-6 overflow-x-auto snap-x snap-mandatory px-6 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div className="flex gap-4 w-max pr-6">
                 {[
-                  "Dark Luxury", "Soft Romance", "Royal Gold",
+                  { name: "Dark Luxury", img: "/themes/card-dark-luxury.png", desc: "Cinematic black, editorial layout, silver glow." },
+                  { name: "Soft Romance", img: "/themes/card-soft-romance.png", desc: "Floral, pink atmosphere, romantic composition." },
+                  { name: "Royal Gold", img: "/themes/card-royal-gold.png", desc: "Opulent gold palette, majestic ambiance." },
                 ].map((theme, i) => (
                   <div
                     key={i}
-                    className="w-[280px] shrink-0 snap-center group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-500 hover:border-yellow-500/40"
+                    className="w-[280px] shrink-0 snap-center group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] p-4 transition-all duration-500 hover:border-yellow-500/40"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                     <div className="relative z-10 flex flex-col items-start text-left">
-                      <div className="mb-6 h-[240px] w-full rounded-[24px] bg-gradient-to-b from-yellow-800/20 to-black" />
+                      <div className="mb-5 h-[240px] w-full rounded-[20px] overflow-hidden relative">
+                        <img src={theme.img} alt={theme.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                      </div>
                       <h3 className="playfair text-2xl font-medium leading-tight">
-                        {theme}
+                        {theme.name}
                       </h3>
                       <p className="mt-3 text-sm leading-relaxed text-neutral-400">
-                        AI-crafted cinematic wedding atmosphere with elegant motion.
+                        {theme.desc}
                       </p>
                     </div>
                   </div>
@@ -228,22 +232,24 @@ export default function Home() {
             {/* Desktop Grid */}
             <div className="hidden sm:grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                "Dark Luxury",
-                "Soft Romance",
-                "Royal Gold",
+                { name: "Dark Luxury", img: "/themes/card-dark-luxury.png", desc: "Cinematic black, editorial layout, silver glow, luxury typography." },
+                { name: "Soft Romance", img: "/themes/card-soft-romance.png", desc: "Floral composition, pink atmosphere, elegant romantic storytelling." },
+                { name: "Royal Gold", img: "/themes/card-royal-gold.png", desc: "Opulent gold palette, majestic ambiance, regal visual direction." },
               ].map((theme) => (
                 <div
-                  key={theme}
-                  className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-6 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/40"
+                  key={theme.name}
+                  className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/40"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-b from-yellow-500/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="relative z-10 flex flex-col items-start text-left">
-                    <div className="mb-6 h-[320px] w-full rounded-[24px] bg-gradient-to-b from-yellow-800/20 to-black" />
+                    <div className="mb-6 h-[320px] w-full rounded-[24px] overflow-hidden relative">
+                      <img src={theme.img} alt={theme.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    </div>
                     <h3 className="playfair text-2xl font-medium leading-tight">
-                      {theme}
+                      {theme.name}
                     </h3>
                     <p className="mt-3 text-sm leading-relaxed text-neutral-400">
-                      AI-crafted cinematic wedding atmosphere with elegant motion and storytelling.
+                      {theme.desc}
                     </p>
                   </div>
                 </div>
@@ -300,7 +306,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="absolute -left-10 bottom-10 hidden w-[220px] rounded-[28px] border border-white/10 bg-white/5 p-5 backdrop-blur-xl md:block">
+            <div className="absolute -left-10 bottom-10 hidden w-[220px] rounded-[28px] border border-white/10 bg-[#0a0a0a] p-5 md:block">
               <p className="text-xs uppercase tracking-[0.2em] text-yellow-500">
                 AI Generated
               </p>
@@ -366,7 +372,7 @@ export default function Home() {
               ].map((testi, i) => (
                 <div
                   key={i}
-                  className={`group relative border border-white/10 bg-white/5 p-6 md:p-8 backdrop-blur-xl transition-all duration-500 hover:border-yellow-500/40 hover:-translate-y-2 shrink-0 w-[280px] sm:w-full ${testi.dup ? 'sm:hidden ' : ''}${i % 2 === 1
+                  className={`group relative border border-white/10 bg-white/[0.03] p-6 md:p-8 transition-all duration-500 hover:border-yellow-500/40 hover:-translate-y-2 shrink-0 w-[280px] sm:w-full ${testi.dup ? 'sm:hidden ' : ''}${i % 2 === 1
                     ? 'rounded-[24px] rounded-tr-[4px] md:rounded-[32px]'
                     : 'rounded-[24px] rounded-tl-[4px] md:rounded-[32px]'
                     }`}

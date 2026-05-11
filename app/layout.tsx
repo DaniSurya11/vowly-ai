@@ -33,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
+        suppressHydrationWarning
         className={`${inter.variable} ${playfair.variable} bg-black text-white`}
       >
         <SmoothScroll>

@@ -47,7 +47,7 @@ export default function Navbar() {
         transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 md:py-5 transition-colors duration-500 ${
           isScrolled || isMobileMenuOpen
-            ? "bg-black/60 backdrop-blur-xl border-b border-white/10"
+            ? "bg-black/80 backdrop-blur-md border-b border-white/10"
             : "bg-transparent border-transparent"
         }`}
       >
@@ -104,7 +104,7 @@ export default function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { delay: 0.3 } }}
-            className="fixed inset-0 z-40 h-[100dvh] w-[100dvw] bg-black/95 backdrop-blur-xl flex flex-col items-center pt-[100px] pb-[calc(3rem+env(safe-area-inset-bottom))] overflow-y-auto lg:hidden"
+            className="fixed inset-0 z-40 h-[100dvh] w-[100dvw] bg-black/95 backdrop-blur-sm flex flex-col items-center pt-[100px] pb-[calc(3rem+env(safe-area-inset-bottom))] overflow-y-auto lg:hidden"
           >
             <motion.div 
               initial="closed"
