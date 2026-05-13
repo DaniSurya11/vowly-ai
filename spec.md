@@ -1,320 +1,343 @@
-# VOWLY AI — Product Specification
+# VOWLY AI — Product Vision Spec
 
-## Overview
+## Philosophy
 
-VOWLY AI is an AI-powered wedding invitation platform that generates cinematic wedding websites automatically based on user preferences, storytelling, and visual atmosphere.
+VOWLY AI is not a wedding website builder.
 
-The platform focuses on:
-- luxury design
-- cinematic motion
-- emotional storytelling
-- AI-generated personalization
+VOWLY AI is a cinematic storytelling experience powered by AI.
 
-Users can create premium wedding websites without design or coding skills.
-
----
-
-# Core Vision
-
-"AI designs your love story."
-
-VOWLY AI is not just a template builder.
-
-It is:
-- AI Wedding Assistant
-- AI Design Generator
-- AI Storytelling Engine
-- AI Wedding Experience Platform
-
----
-
-# Main Goals
-
-## Phase 1 — MVP
-Launch cinematic AI wedding landing pages.
-
-Features:
-- AI-generated themes
-- wedding website builder
-- gallery
-- countdown
-- RSVP
-- music
-- timeline
-- mobile-first invitation
-
----
-
-## Phase 2 — AI Assistant
-AI becomes interactive.
-
-Features:
-- conversational onboarding
-- wedding mood analysis
-- auto-generated captions
-- AI copywriting
-- AI timeline suggestions
-- AI music recommendations
-
----
-
-## Phase 3 — AI Smart Design Engine
-Dynamic personalized rendering.
-
-Features:
-- AI theme generation
-- typography generation
-- color grading engine
-- cinematic composition system
-- automatic animation styling
-
----
-
----
-
-# Target Users
-
-## Primary
-- couples age 22–35
-- modern wedding users
-- social media active couples
-- aesthetic-focused users
-
-## Secondary
-- wedding organizers
-- invitation agencies
-- wedding studios
-
----
-
-# Product Style Direction
-
-## Visual Identity
-- luxury
-- cinematic
-- elegant
-- modern
+The product should feel:
 - emotional
 - immersive
+- elegant
+- cinematic
+- editorial
+- human
 
-## UI Direction
+NOT:
+- dashboard-heavy
+- template marketplace
+- generic SaaS builder
+- crowded UI
+
+The goal is:
+“to make couples feel like their love story became a romantic film experience.”
+
+---
+
+# Core Product Direction
+
+## Product Type
+
+AI-powered cinematic wedding experience platform.
+
+---
+
+# Design Principles
+
+## 1. Mobile First Always
+
+VOWLY is designed primarily for:
+- WhatsApp sharing
+- mobile portrait viewing
+- immersive vertical storytelling
+
+Desktop is enhancement only.
+
+---
+
+## 2. Cinematic Experience
+
+Every section should feel like:
+- a film scene
+- emotional pacing
+- visual storytelling
+
+Avoid:
+- dense layouts
+- information overload
+- generic wedding templates
+
+---
+
+## 3. Minimal Luxury
+
 Inspired by:
 - Apple
-- Linear
-- Raycast
-- Luxury wedding editorials
-- Fashion campaign websites
+- OpenAI
+- A24 cinema
+- luxury editorial websites
+
+Key characteristics:
+- large whitespace
+- subtle motion
+- elegant typography
+- calm interfaces
 
 ---
 
-# Main User Flow
+## 4. Emotional Storytelling
 
-## Landing Page
-User visits homepage.
+The experience should feel personal.
 
-CTA:
-"Generate Your Wedding"
+Users should feel:
+“VOWLY understands our story.”
 
-↓
-
-## AI Onboarding
-AI asks:
-- wedding style
-- music vibe
-- preferred colors
-- wedding atmosphere
-- upload prewedding photos
-
-↓
-
-## AI Analysis
-AI analyzes:
-- visual mood
-- romantic tone
-- color palette
-- composition direction
-
-↓
-
-## Theme Generation
-AI generates:
-- layout
-- typography
-- animations
-- color system
-- storytelling flow
-
-↓
-
-## Live Preview
-User sees generated website instantly.
-
-↓
-
-## Publish
-User publishes invitation.
-
-Custom URL:
-vowlyai.com/dani-ellena
+NOT:
+“We are editing a template.”
 
 ---
 
-# Features
+# Product Emotion Flow
 
-## Essential Features
+## Correct Flow
 
-### Hero Landing
-- cinematic hero section
-- luxury animation
-- SVG transitions
-- ambient lighting
+Emotion
+↓
+Story
+↓
+AI Understanding
+↓
+Theme Recommendation
+↓
+Cinematic Preview
+↓
+Personalization
+↓
+Publish
 
-### Wedding Invitation
-- opening screen
-- couple introduction
-- wedding date
-- event location
-- countdown
-- gallery
-- RSVP
-- gift section
-- maps integration
+---
 
-### AI Features
-- AI theme generator
-- AI copywriting
-- AI image mood analyzer
-- AI palette generator
-- AI cinematic atmosphere engine
+# Incorrect Flow
 
-### Dashboard
-- invitation management
-- analytics
-- guest responses
-- publish settings
+Template
+↓
+Edit
+↓
+Publish
+
+---
+
+# User Experience Goals
+
+Users should feel:
+- emotional
+- excited
+- understood
+- amazed
+- premium
+- cinematic
+
+The product should never feel:
+- technical
+- corporate
+- productivity-focused
+- form-heavy
 
 ---
 
 # Theme System
 
-## Initial Themes
+Themes are NOT templates.
 
-### Royal Gold
-Luxury black and gold cinematic theme.
+Themes are cinematic universes.
 
-### Soft Romance
-Warm romantic editorial style.
-
-### Dark Luxury
-Modern elegant dark atmosphere.
+Each theme must have:
+- unique motion system
+- unique typography pairing
+- unique atmosphere
+- unique color direction
+- unique spacing rhythm
 
 ---
 
-# Tech Stack
+# Initial Theme Collection
 
-## Frontend
+## 1. Sunset Cinema Editorial
+Warm cinematic Bali sunset atmosphere.
+
+## 2. Midnight Editorial
+Dark luxury cinematic experience.
+
+## 3. OpenAI Minimal
+Ultra-clean future luxury minimalism.
+
+## 4. Japanese Nostalgia
+Warm nostalgic cinematic intimacy.
+
+## 5. Modern Botanical
+Organic editorial elegance.
+
+## 6. Dreamscape Ethereal
+Soft dreamy romantic fantasy.
+
+---
+
+# Motion System
+
+Motion should always feel:
+- slow
+- atmospheric
+- elegant
+- subtle
+- cinematic
+
+Avoid:
+- bounce animations
+- flashy effects
+- aggressive transitions
+
+Preferred Motion:
+- fade reveal
+- soft parallax
+- cinematic scaling
+- ambient blur movement
+- smooth scroll pacing
+
+---
+
+# Typography System
+
+Typography is the main emotional tool.
+
+Heading Fonts:
+- Canela
+- Cormorant Garamond
+- Bodoni Moda
+
+Body Fonts:
+- Inter
+- Manrope
+- Suisse-style sans serif
+
+Rules:
+- large typography
+- breathing whitespace
+- emotional pacing
+
+---
+
+# Spacing Philosophy
+
+Luxury comes from restraint.
+
+Rules:
+- large vertical spacing
+- one emotional moment per screen
+- avoid crowded sections
+- allow content to breathe
+
+---
+
+# Asset Direction
+
+Assets must feel:
+- cinematic
+- editorial
+- atmospheric
+- elegant
+
+Avoid:
+- generic floral overload
+- crowded decorative elements
+- cheap luxury aesthetics
+
+Preferred Assets:
+- warm gradients
+- subtle grain textures
+- elegant SVG curves
+- cinematic overlays
+- ambient glows
+- minimal line ornaments
+
+---
+
+# AI Role
+
+AI is NOT the designer.
+
+AI is the creative director assistant.
+
+AI responsibilities:
+- mood analysis
+- storytelling generation
+- theme recommendation
+- typography recommendation
+- cinematic direction
+- emotional personalization
+
+AI should NOT:
+- replace faces
+- regenerate couple identity
+- create fake emotional realism
+
+Authenticity matters.
+
+---
+
+# Core Tech Stack
+
+Frontend:
 - Next.js
 - Tailwind CSS
-- Framer Motion
+- TypeScript
+
+Motion:
 - GSAP
+- ScrollTrigger
+- Lenis
 
-## Backend
-- Supabase
-
-## Storage
-- Cloudinary
-
-## AI
-- OpenAI API
-
-## Hosting
+Hosting:
 - Vercel
 
----
+Image:
+- Cloudinary
 
-# AI Architecture
-
-## AI Role
-
-AI acts as:
-- designer
-- copywriter
-- wedding assistant
-- storytelling engine
+AI:
+- OpenAI API
 
 ---
 
-# AI Prompt Flow
+# AI Analysis Experience
 
-Input:
-- style
-- wedding vibe
-- music
-- uploaded photos
+The AI analysis screen is the MAGIC MOMENT.
 
-↓
-
-AI Output:
-- generated theme
-- typography
-- section structure
-- color palette
-- animation direction
-- wedding wording
-
----
-
-# Monetization
-
-## Freemium
-Free limited invitation generation.
-
-## Premium
-Paid:
-- premium themes
-- custom domains
-- advanced animations
-- AI personalization
-- gallery expansion
-
----
-
-# Future Roadmap
-
-## Future Features
-- AI-generated wedding video
-- AI-generated soundtrack
-- AI voice narration
-- AI RSVP assistant
-- AI wedding planner
-
----
-
-# Success Metrics
-
-## KPIs
-- invitation generation count
-- publish rate
-- RSVP conversion
-- paid conversion
-- social shares
-- TikTok virality
-
----
-
-# Brand Personality
-
-VOWLY AI should feel:
-- emotional
-- premium
-- cinematic
-- modern
+It should feel:
 - intelligent
-- magical
+- emotional
+- cinematic
+- anticipatory
+
+Example analysis:
+- warm sunset atmosphere
+- editorial romantic chemistry
+- cinematic emotional tone
+
+No boring spinners.
+
+Use:
+- ambient blur
+- cinematic transitions
+- elegant loading pacing
 
 ---
 
-# Final Goal
+# Homepage Direction
 
-Become:
-"The cinematic AI wedding platform for modern couples."
+The homepage should feel like:
+- a cinematic showcase
+- an emotional demo
+- a romantic experience
+
+NOT:
+- SaaS landing page
+- feature-heavy dashboard
+- generic startup homepage
+
+---
+
+# Product Goal
+
+The final experience should feel like:
+
+“An AI creative director crafting a cinematic wedding story.”
