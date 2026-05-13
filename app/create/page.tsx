@@ -1,22 +1,22 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, type HTMLMotionProps } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
   exit: { opacity: 0, y: -20 },
-  transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] }
-};
+  transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] as const }
+} satisfies Omit<HTMLMotionProps<"div">, "ref">;
 
 const slowFade = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
   exit: { opacity: 0 },
-  transition: { duration: 2, ease: "easeInOut" }
-};
+  transition: { duration: 2, ease: "easeInOut" as const }
+} satisfies Omit<HTMLMotionProps<"div">, "ref">;
 
 export default function CreateInvitation() {
   const router = useRouter();

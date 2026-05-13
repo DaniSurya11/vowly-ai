@@ -43,23 +43,10 @@ export default function GuestInvitationPreview() {
     };
   }, []);
 
-  const isLoaded = Boolean(aiData);
-  const names =
-    isLoaded && aiData.inputData?.names
-      ? aiData.inputData.names
-      : fallbackInvitation.names;
-  const location =
-    isLoaded && aiData.inputData?.location
-      ? aiData.inputData.location
-      : fallbackInvitation.location;
-  const date =
-    isLoaded && aiData.inputData?.date
-      ? aiData.inputData.date
-      : fallbackInvitation.date;
-  const tagline =
-    isLoaded && aiData.cinematicTagline
-      ? aiData.cinematicTagline
-      : fallbackInvitation.tagline;
+  const names = aiData?.inputData?.names ?? fallbackInvitation.names;
+  const location = aiData?.inputData?.location ?? fallbackInvitation.location;
+  const date = aiData?.inputData?.date ?? fallbackInvitation.date;
+  const tagline = aiData?.cinematicTagline ?? fallbackInvitation.tagline;
 
   return <SunsetCinemaHero names={names} date={date} location={location} tagline={tagline} />;
 }
