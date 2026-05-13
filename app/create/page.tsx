@@ -1,22 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence, type HTMLMotionProps } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
   animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 },
-  transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] as const }
-} satisfies Omit<HTMLMotionProps<"div">, "ref">;
+  exit: { opacity: 0, y: -20 }
+} as const;
 
 const slowFade = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
-  exit: { opacity: 0 },
-  transition: { duration: 2, ease: "easeInOut" as const }
-} satisfies Omit<HTMLMotionProps<"div">, "ref">;
+  exit: { opacity: 0 }
+} as const;
 
 export default function CreateInvitation() {
   const router = useRouter();
@@ -76,7 +74,7 @@ export default function CreateInvitation() {
           
           {/* STEP 1: Emotional Intro */}
           {step === 1 && (
-            <motion.div key="step1" {...slowFade} className="flex-1 flex flex-col items-center justify-center p-8 text-center">
+            <motion.div key="step1" {...slowFade} transition={{ duration: 2, ease: [0.42, 0, 0.58, 1] }} className="flex-1 flex flex-col items-center justify-center p-8 text-center">
               <motion.h1 
                 {...fadeUp}
                 className="text-4xl md:text-5xl lg:text-6xl font-light mb-8 tracking-wide text-white/90 max-w-lg leading-tight playfair"
@@ -180,7 +178,7 @@ export default function CreateInvitation() {
 
           {/* STEP 4: AI Analysis Screen (The Magic Moment) */}
           {step === 4 && (
-            <motion.div key="step4" {...slowFade} className="flex-1 flex flex-col items-center justify-center p-8 text-center relative">
+            <motion.div key="step4" {...slowFade} transition={{ duration: 2, ease: [0.42, 0, 0.58, 1] }} className="flex-1 flex flex-col items-center justify-center p-8 text-center relative">
               {/* Soft blur cinematic background */}
               <motion.div 
                 animate={{ scale: [1, 1.2, 1], filter: ["blur(40px)", "blur(60px)", "blur(40px)"], opacity: [0.1, 0.2, 0.1] }}
@@ -207,7 +205,7 @@ export default function CreateInvitation() {
 
           {/* STEP 5: Theme Recommendation */}
           {step === 5 && (
-            <motion.div key="step5" {...slowFade} className="flex-1 flex flex-col justify-center items-center p-6 w-full h-full relative">
+            <motion.div key="step5" {...slowFade} transition={{ duration: 2, ease: [0.42, 0, 0.58, 1] }} className="flex-1 flex flex-col justify-center items-center p-6 w-full h-full relative">
               
               {/* Premium Background Visual */}
               <div className="absolute inset-0 z-0">
