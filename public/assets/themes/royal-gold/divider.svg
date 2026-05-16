@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 42" role="img" aria-label="Gold ornamental section divider">
+  <defs>
+    <linearGradient id="dividerGold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#D4AF37" stop-opacity="0"/>
+      <stop offset="0.18" stop-color="#D4AF37" stop-opacity="0.64"/>
+      <stop offset="0.45" stop-color="#F5E6B3"/>
+      <stop offset="0.5" stop-color="#F6C453"/>
+      <stop offset="0.55" stop-color="#F5E6B3"/>
+      <stop offset="0.82" stop-color="#D4AF37" stop-opacity="0.64"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="dividerGem" cx="50%" cy="50%" r="60%">
+      <stop offset="0" stop-color="#F5E6B3"/>
+      <stop offset="0.45" stop-color="#F6C453"/>
+      <stop offset="1" stop-color="#D4AF37"/>
+    </radialGradient>
+  </defs>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 21 H176" stroke="url(#dividerGold)" stroke-width="1.05"/>
+    <path d="M244 21 H402" stroke="url(#dividerGold)" stroke-width="1.05"/>
+    <path d="M72 16 H162" stroke="#F5E6B3" stroke-width="0.45" opacity="0.34"/>
+    <path d="M258 16 H348" stroke="#F5E6B3" stroke-width="0.45" opacity="0.34"/>
+    <path d="M175 21 C188 10 199 10 210 21 C221 10 232 10 245 21" stroke="url(#dividerGold)" stroke-width="1.2" opacity="0.9"/>
+    <path d="M175 21 C188 32 199 32 210 21 C221 32 232 32 245 21" stroke="url(#dividerGold)" stroke-width="1.2" opacity="0.9"/>
+    <path d="M190 21 C195 15 203 15 210 21 C217 15 225 15 230 21" stroke="#F5E6B3" stroke-width="0.55" opacity="0.55"/>
+    <path d="M190 21 C195 27 203 27 210 21 C217 27 225 27 230 21" stroke="#F5E6B3" stroke-width="0.55" opacity="0.55"/>
+    <circle cx="210" cy="21" r="3.4" fill="url(#dividerGem)" stroke="#F5E6B3" stroke-width="0.45"/>
+    <path d="M210 11 L214 21 L210 31 L206 21 Z" fill="url(#dividerGem)" stroke="#F5E6B3" stroke-width="0.45"/>
+    <circle cx="185" cy="21" r="1.4" fill="#F6C453" opacity="0.8"/>
+    <circle cx="235" cy="21" r="1.4" fill="#F6C453" opacity="0.8"/>
+  </g>
+</svg>

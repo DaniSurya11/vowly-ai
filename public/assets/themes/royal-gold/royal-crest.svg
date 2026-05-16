@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 210" role="img" aria-label="Royal gold heraldic crest ornament">
+  <defs>
+    <linearGradient id="crestGold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F5E6B3"/>
+      <stop offset="0.24" stop-color="#F6C453"/>
+      <stop offset="0.54" stop-color="#D4AF37"/>
+      <stop offset="0.78" stop-color="#F5E6B3"/>
+      <stop offset="1" stop-color="#D4AF37"/>
+    </linearGradient>
+    <linearGradient id="crestSoft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F5E6B3" stop-opacity="0.92"/>
+      <stop offset="0.58" stop-color="#F6C453" stop-opacity="0.78"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0.48"/>
+    </linearGradient>
+    <radialGradient id="crestJewel" cx="50%" cy="38%" r="62%">
+      <stop offset="0" stop-color="#F5E6B3"/>
+      <stop offset="0.32" stop-color="#F6C453"/>
+      <stop offset="0.7" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0.28"/>
+    </radialGradient>
+    <path id="crestLeaf" d="M0 0 C10 -13 22 -15 36 -8 C25 0 16 7 0 0 Z"/>
+    <path id="crestPetal" d="M0 -20 C10 -12 12 7 0 20 C-12 7 -10 -12 0 -20 Z"/>
+  </defs>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 154 H184" stroke="url(#crestGold)" stroke-width="1.45" opacity="0.68"/>
+    <path d="M336 154 H504" stroke="url(#crestGold)" stroke-width="1.45" opacity="0.68"/>
+    <path d="M26 148 C64 149 88 149 126 148" stroke="#F5E6B3" stroke-width="0.55" opacity="0.42"/>
+    <path d="M394 148 C432 149 456 149 494 148" stroke="#F5E6B3" stroke-width="0.55" opacity="0.42"/>
+
+    <g stroke="url(#crestGold)" stroke-width="2.35">
+      <path d="M260 46 L246 82 H274 Z" fill="url(#crestSoft)" opacity="0.93"/>
+      <path d="M229 83 C238 62 245 50 260 38 C275 50 282 62 291 83" opacity="0.88"/>
+      <path d="M225 86 H295" opacity="0.9"/>
+      <path d="M232 72 L223 44 L247 61 L260 31 L273 61 L297 44 L288 72" fill="none"/>
+    </g>
+    <g fill="url(#crestGold)" opacity="0.96">
+      <circle cx="223" cy="44" r="4.1"/>
+      <circle cx="260" cy="31" r="4.6"/>
+      <circle cx="297" cy="44" r="4.1"/>
+      <circle cx="232" cy="72" r="2.7"/>
+      <circle cx="288" cy="72" r="2.7"/>
+    </g>
+
+    <g>
+      <path d="M260 75 C247 86 239 98 241 115 C242 133 253 142 260 151 C267 142 278 133 279 115 C281 98 273 86 260 75 Z" fill="url(#crestJewel)" opacity="0.9" stroke="url(#crestGold)" stroke-width="2.1"/>
+      <path d="M260 85 C252 93 249 103 252 114 C254 123 259 130 260 137 C261 130 266 123 268 114 C271 103 268 93 260 85 Z" fill="none" stroke="#F5E6B3" stroke-width="0.9" opacity="0.74"/>
+      <path d="M245 110 C252 106 268 106 275 110" stroke="#F5E6B3" stroke-width="0.8" opacity="0.7"/>
+      <circle cx="260" cy="105" r="5.3" fill="#F5E6B3" opacity="0.86"/>
+      <circle cx="260" cy="105" r="2.4" fill="#D4AF37" opacity="0.8"/>
+    </g>
+
+    <g stroke="url(#crestGold)" stroke-width="2" opacity="0.94">
+      <path d="M260 150 C244 139 228 130 206 133 C184 136 173 151 160 154"/>
+      <path d="M260 150 C276 139 292 130 314 133 C336 136 347 151 360 154"/>
+      <path d="M240 143 C219 154 196 158 173 148"/>
+      <path d="M280 143 C301 154 324 158 347 148"/>
+    </g>
+
+    <g id="leftScroll" stroke="url(#crestGold)" stroke-width="2.15">
+      <path d="M252 129 C230 102 196 91 176 108 C159 122 166 146 185 144 C204 142 202 116 184 120 C174 123 174 134 181 138" />
+      <path d="M238 134 C213 120 184 121 168 139 C156 153 160 171 177 171 C193 171 194 151 181 150 C172 149 169 158 174 164" />
+      <path d="M217 139 C197 151 184 164 169 185" opacity="0.82"/>
+      <path d="M211 119 C206 105 213 91 228 88 C241 86 246 100 238 107 C232 113 224 109 225 101" opacity="0.82"/>
+      <path d="M196 107 C191 91 174 84 159 92 C144 101 147 119 161 121 C171 123 177 111 170 104" opacity="0.82"/>
+      <path d="M180 144 C155 136 131 143 119 161 C109 175 117 191 132 188 C146 185 144 167 132 169" opacity="0.82"/>
+      <path d="M158 153 C141 143 119 138 99 145" opacity="0.7"/>
+      <path d="M151 177 C135 178 121 184 109 197" opacity="0.72"/>
+      <path d="M221 158 C206 168 197 180 191 197" opacity="0.68"/>
+    </g>
+    <use href="#leftScroll" transform="translate(520 0) scale(-1 1)"/>
+
+    <g fill="url(#crestGold)" stroke="url(#crestGold)" stroke-width="0.75" opacity="0.92">
+      <use href="#crestLeaf" transform="translate(205 132) rotate(-32) scale(0.6)"/>
+      <use href="#crestLeaf" transform="translate(184 116) rotate(-172) scale(0.48)"/>
+      <use href="#crestLeaf" transform="translate(167 152) rotate(-22) scale(0.45)"/>
+      <use href="#crestLeaf" transform="translate(129 162) rotate(-38) scale(0.42)"/>
+      <use href="#crestLeaf" transform="translate(315 132) scale(-0.6 0.6) rotate(-32)"/>
+      <use href="#crestLeaf" transform="translate(336 116) scale(-0.48 0.48) rotate(-172)"/>
+      <use href="#crestLeaf" transform="translate(353 152) scale(-0.45 0.45) rotate(-22)"/>
+      <use href="#crestLeaf" transform="translate(391 162) scale(-0.42 0.42) rotate(-38)"/>
+    </g>
+
+    <g transform="translate(260 153)" opacity="0.95">
+      <g fill="url(#crestGold)" stroke="#F5E6B3" stroke-width="0.55">
+        <use href="#crestPetal" transform="rotate(0) scale(0.55)"/>
+        <use href="#crestPetal" transform="rotate(45) scale(0.5)"/>
+        <use href="#crestPetal" transform="rotate(90) scale(0.55)"/>
+        <use href="#crestPetal" transform="rotate(135) scale(0.5)"/>
+        <use href="#crestPetal" transform="rotate(180) scale(0.55)"/>
+        <use href="#crestPetal" transform="rotate(225) scale(0.5)"/>
+        <use href="#crestPetal" transform="rotate(270) scale(0.55)"/>
+        <use href="#crestPetal" transform="rotate(315) scale(0.5)"/>
+        <circle cx="0" cy="0" r="5.2" fill="#F5E6B3"/>
+        <circle cx="0" cy="0" r="2.1" fill="#D4AF37"/>
+      </g>
+    </g>
+
+    <g stroke="#F5E6B3" stroke-width="0.85" opacity="0.52">
+      <path d="M108 154 C130 150 143 147 156 136"/>
+      <path d="M412 154 C390 150 377 147 364 136"/>
+      <path d="M206 184 C223 170 241 164 260 164 C279 164 297 170 314 184"/>
+      <path d="M226 181 C238 176 249 173 260 173 C271 173 282 176 294 181"/>
+    </g>
+    <g fill="#F6C453" opacity="0.88">
+      <circle cx="98" cy="145" r="2.1"/>
+      <circle cx="122" cy="161" r="1.7"/>
+      <circle cx="176" cy="108" r="1.8"/>
+      <circle cx="205" cy="132" r="1.8"/>
+      <circle cx="422" cy="145" r="2.1"/>
+      <circle cx="398" cy="161" r="1.7"/>
+      <circle cx="344" cy="108" r="1.8"/>
+      <circle cx="315" cy="132" r="1.8"/>
+      <circle cx="260" cy="184" r="2.3"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 932" role="img" aria-label="Cinematic golden top-left spotlight">
+  <defs>
+    <radialGradient id="topBloom" cx="7%" cy="0%" r="76%">
+      <stop offset="0" stop-color="#F5E6B3" stop-opacity="0.78"/>
+      <stop offset="0.18" stop-color="#F6C453" stop-opacity="0.44"/>
+      <stop offset="0.42" stop-color="#D4AF37" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="lowerBloom" cx="92%" cy="78%" r="45%">
+      <stop offset="0" stop-color="#F6C453" stop-opacity="0.26"/>
+      <stop offset="0.42" stop-color="#D4AF37" stop-opacity="0.1"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="rayA" x1="15" y1="-20" x2="235" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F5E6B3" stop-opacity="0.58"/>
+      <stop offset="0.14" stop-color="#F6C453" stop-opacity="0.28"/>
+      <stop offset="0.52" stop-color="#D4AF37" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rayB" x1="67" y1="-28" x2="295" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F5E6B3" stop-opacity="0.46"/>
+      <stop offset="0.22" stop-color="#F6C453" stop-opacity="0.2"/>
+      <stop offset="0.68" stop-color="#D4AF37" stop-opacity="0.04"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="rayC" x1="-8" y1="12" x2="130" y2="396" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F5E6B3" stop-opacity="0.42"/>
+      <stop offset="0.26" stop-color="#F6C453" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="430" height="932" fill="url(#topBloom)"/>
+  <rect width="430" height="932" fill="url(#lowerBloom)" opacity="0.72"/>
+  <path d="M16 -24 C44 112 82 268 174 536 L120 560 C68 350 24 168 -6 12 Z" fill="url(#rayA)" opacity="0.8"/>
+  <path d="M62 -35 C92 83 137 208 275 476 L228 510 C132 304 74 136 42 -8 Z" fill="url(#rayB)" opacity="0.76"/>
+  <path d="M-16 0 C12 107 48 210 109 430 L68 448 C28 292 -2 154 -28 24 Z" fill="url(#rayC)" opacity="0.82"/>
+  <path d="M95 -16 C126 96 165 170 319 368 L288 395 C176 244 114 116 82 -12 Z" fill="url(#rayB)" opacity="0.36"/>
+  <path d="M408 650 C364 708 340 782 322 910" fill="none" stroke="#D4AF37" stroke-width="1.2" opacity="0.18"/>
+  <path d="M429 612 C374 694 348 780 334 932" fill="none" stroke="#F6C453" stroke-width="0.75" opacity="0.28"/>
+  <path d="M382 740 C360 780 350 838 346 920" fill="none" stroke="#F5E6B3" stroke-width="0.45" opacity="0.16"/>
+</svg>

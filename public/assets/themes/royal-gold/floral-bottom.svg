@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 500" role="img" aria-label="Bottom-left royal gold floral ornament">
+  <defs>
+    <linearGradient id="bottomGold" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#F5E6B3"/>
+      <stop offset="0.28" stop-color="#F6C453"/>
+      <stop offset="0.62" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#F5E6B3"/>
+    </linearGradient>
+    <linearGradient id="bottomStemGold" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#F5E6B3" stop-opacity="0.78"/>
+      <stop offset="0.36" stop-color="#F6C453" stop-opacity="0.68"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0.42"/>
+    </linearGradient>
+    <radialGradient id="bottomPetalGold" cx="44%" cy="38%" r="68%">
+      <stop offset="0" stop-color="#F5E6B3"/>
+      <stop offset="0.34" stop-color="#F6C453"/>
+      <stop offset="0.76" stop-color="#D4AF37"/>
+      <stop offset="1" stop-color="#D4AF37" stop-opacity="0.32"/>
+    </radialGradient>
+    <path id="bottomLeaf" d="M0 0 C18 -21 43 -22 62 -4 C40 -1 23 14 0 0 Z"/>
+    <path id="bottomLongLeaf" d="M0 0 C12 -35 43 -55 78 -42 C54 -23 37 -3 0 0 Z"/>
+    <path id="bottomBud" d="M0 -16 C10 -11 14 2 8 13 C1 23 -11 18 -13 6 C-15 -4 -9 -13 0 -16 Z"/>
+    <g id="bottomFlower">
+      <path d="M0 -32 C17 -24 21 -4 6 6 C27 5 39 20 25 34 C11 47 -5 34 -6 15 C-12 34 -31 41 -41 25 C-51 9 -33 -4 -14 2 C-29 -10 -25 -30 -8 -35 C-4 -36 -2 -34 0 -32 Z" fill="url(#bottomPetalGold)" stroke="#F5E6B3" stroke-width="1.1"/>
+      <path d="M5 -17 C11 -7 9 5 0 11 M16 14 C4 14 -5 9 -9 0 M-23 19 C-15 8 -5 4 7 5 M-16 -18 C-9 -10 -7 -2 -11 8" fill="none" stroke="#F5E6B3" stroke-width="0.72" opacity="0.62"/>
+      <circle cx="0" cy="2" r="8.6" fill="#F6C453" opacity="0.92"/>
+      <circle cx="0" cy="2" r="3.7" fill="#F5E6B3" opacity="0.88"/>
+      <g fill="#F5E6B3" opacity="0.82">
+        <circle cx="-6" cy="-2" r="1.1"/><circle cx="6" cy="-2" r="1.1"/><circle cx="-5" cy="7" r="1"/><circle cx="5" cy="7" r="1"/><circle cx="0" cy="-7" r="0.9"/>
+      </g>
+    </g>
+    <g id="bottomSmallFlower">
+      <path d="M0 -18 C8 -12 9 -3 3 2 C13 1 19 9 12 17 C4 25 -4 17 -4 7 C-8 18 -18 21 -23 12 C-28 3 -19 -3 -8 0 C-15 -8 -12 -18 -2 -20 Z" fill="url(#bottomPetalGold)" stroke="#F5E6B3" stroke-width="0.75"/>
+      <circle cx="0" cy="1" r="4.8" fill="#F6C453"/>
+      <circle cx="0" cy="1" r="1.9" fill="#F5E6B3"/>
+    </g>
+  </defs>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 516 C34 447 34 392 19 323 C5 261 20 183 72 118 C95 89 123 63 150 18" stroke="url(#bottomStemGold)" stroke-width="2.2" opacity="0.86"/>
+    <path d="M42 505 C65 431 73 371 58 304 C44 241 64 168 111 109" stroke="url(#bottomStemGold)" stroke-width="1.4" opacity="0.72"/>
+    <path d="M-6 464 C31 418 60 381 102 343 C142 307 163 270 175 222" stroke="url(#bottomStemGold)" stroke-width="1.35" opacity="0.72"/>
+    <path d="M1 374 C39 358 70 331 98 291 C125 252 159 224 198 208" stroke="url(#bottomStemGold)" stroke-width="1.25" opacity="0.7"/>
+    <path d="M23 268 C66 257 106 234 137 194 C164 159 194 136 234 124" stroke="url(#bottomStemGold)" stroke-width="1.2" opacity="0.62"/>
+    <path d="M60 149 C94 145 128 127 154 95 C175 69 196 46 228 31" stroke="url(#bottomStemGold)" stroke-width="1.05" opacity="0.54"/>
+
+    <g stroke="url(#bottomGold)" stroke-width="0.85" opacity="0.64">
+      <path d="M24 452 C53 421 77 394 103 357"/>
+      <path d="M32 417 C13 401 2 380 0 350"/>
+      <path d="M54 331 C29 322 14 303 6 276"/>
+      <path d="M86 223 C54 214 35 193 27 163"/>
+      <path d="M122 113 C95 105 78 88 68 61"/>
+      <path d="M105 342 C125 353 146 354 166 344"/>
+      <path d="M139 191 C163 200 188 198 211 184"/>
+    </g>
+
+    <g fill="url(#bottomGold)" stroke="#F5E6B3" stroke-width="0.55" opacity="0.9">
+      <use href="#bottomLongLeaf" transform="translate(37 458) rotate(-64) scale(0.78)"/>
+      <use href="#bottomLeaf" transform="translate(50 423) rotate(126) scale(0.62)"/>
+      <use href="#bottomLeaf" transform="translate(27 389) rotate(-54) scale(0.58)"/>
+      <use href="#bottomLongLeaf" transform="translate(78 367) rotate(138) scale(0.64)"/>
+      <use href="#bottomLeaf" transform="translate(56 334) rotate(-50) scale(0.55)"/>
+      <use href="#bottomLeaf" transform="translate(99 323) rotate(142) scale(0.56)"/>
+      <use href="#bottomLongLeaf" transform="translate(34 286) rotate(-48) scale(0.68)"/>
+      <use href="#bottomLeaf" transform="translate(85 260) rotate(126) scale(0.5)"/>
+      <use href="#bottomLeaf" transform="translate(68 228) rotate(-56) scale(0.48)"/>
+      <use href="#bottomLongLeaf" transform="translate(122 191) rotate(138) scale(0.56)"/>
+      <use href="#bottomLeaf" transform="translate(143 163) rotate(162) scale(0.44)"/>
+      <use href="#bottomLeaf" transform="translate(95 143) rotate(-44) scale(0.52)"/>
+      <use href="#bottomLongLeaf" transform="translate(155 91) rotate(130) scale(0.48)"/>
+      <use href="#bottomLeaf" transform="translate(184 63) rotate(158) scale(0.42)"/>
+      <use href="#bottomLeaf" transform="translate(118 72) rotate(-48) scale(0.42)"/>
+    </g>
+
+    <g>
+      <use href="#bottomFlower" transform="translate(58 430) rotate(162) scale(0.84)"/>
+      <use href="#bottomFlower" transform="translate(33 310) rotate(-162) scale(0.68)"/>
+      <use href="#bottomFlower" transform="translate(115 214) rotate(154) scale(0.64)"/>
+      <use href="#bottomFlower" transform="translate(171 108) rotate(170) scale(0.55)"/>
+      <use href="#bottomSmallFlower" transform="translate(96 363) rotate(-156) scale(0.78)"/>
+      <use href="#bottomSmallFlower" transform="translate(14 249) rotate(168) scale(0.68)"/>
+      <use href="#bottomSmallFlower" transform="translate(162 260) rotate(-150) scale(0.62)"/>
+      <use href="#bottomSmallFlower" transform="translate(219 134) rotate(158) scale(0.58)"/>
+      <use href="#bottomSmallFlower" transform="translate(214 34) rotate(-164) scale(0.48)"/>
+    </g>
+
+    <g fill="url(#bottomGold)" stroke="#F5E6B3" stroke-width="0.48" opacity="0.78">
+      <use href="#bottomBud" transform="translate(14 478) rotate(-156) scale(0.58)"/>
+      <use href="#bottomBud" transform="translate(73 397) rotate(138) scale(0.48)"/>
+      <use href="#bottomBud" transform="translate(1 354) rotate(-148) scale(0.46)"/>
+      <use href="#bottomBud" transform="translate(129 342) rotate(104) scale(0.44)"/>
+      <use href="#bottomBud" transform="translate(13 177) rotate(-138) scale(0.45)"/>
+      <use href="#bottomBud" transform="translate(194 201) rotate(104) scale(0.42)"/>
+      <use href="#bottomBud" transform="translate(74 50) rotate(-138) scale(0.4)"/>
+      <use href="#bottomBud" transform="translate(242 117) rotate(112) scale(0.38)"/>
+    </g>
+
+    <g stroke="#F5E6B3" stroke-width="0.55" opacity="0.34">
+      <path d="M2 430 C23 385 32 348 26 303"/>
+      <path d="M36 483 C53 442 57 402 48 362"/>
+      <path d="M75 316 C90 281 114 249 150 220"/>
+      <path d="M82 160 C107 135 127 106 141 69"/>
+      <path d="M181 231 C204 215 224 198 242 176"/>
+    </g>
+    <g fill="#F6C453">
+      <circle cx="17" cy="446" r="1.4" opacity="0.78"/><circle cx="83" cy="404" r="1.1" opacity="0.68"/><circle cx="22" cy="368" r="0.9" opacity="0.58"/><circle cx="104" cy="298" r="1.2" opacity="0.62"/><circle cx="8" cy="216" r="1.3" opacity="0.54"/><circle cx="144" cy="175" r="0.9" opacity="0.58"/><circle cx="99" cy="99" r="1.1" opacity="0.52"/><circle cx="199" cy="60" r="0.9" opacity="0.56"/>
+    </g>
+  </g>
+</svg>
