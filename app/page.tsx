@@ -3,20 +3,9 @@
 import { motion, useScroll } from "framer-motion";
 import Link from "next/link";
 import MagneticButton from "@/components/MagneticButton";
-import { useState, useEffect, useRef } from "react";
 
 export default function Home() {
-  const { scrollY, scrollYProgress } = useScroll();
-  const [mounted, setMounted] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-
-
-  if (!mounted) return <div className="min-h-[100dvh] bg-black" />;
+  const { scrollYProgress } = useScroll();
 
   return (
     <main className="relative min-h-[100dvh] overflow-hidden bg-black text-white">
@@ -109,7 +98,7 @@ export default function Home() {
         >
           <MagneticButton>
             <Link
-              href="/create"
+              href="#waitlist"
               className="group relative overflow-hidden block rounded-full border border-yellow-500/40 bg-transparent px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all"
             >
               <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
@@ -204,17 +193,23 @@ export default function Home() {
             <div className="sm:hidden flex w-[calc(100%+3rem)] -mx-6 overflow-x-auto snap-x snap-mandatory px-6 pb-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               <div className="flex gap-4 w-max pr-6">
                 {[
-                  { name: "Dark Luxury", img: "/themes/card-dark-luxury.png", desc: "Cinematic black, editorial layout, silver glow." },
-                  { name: "Soft Romance", img: "/themes/card-soft-romance.png", desc: "Floral, pink atmosphere, romantic composition." },
-                  { name: "Royal Gold", img: "/themes/card-royal-gold.png", desc: "Opulent gold palette, majestic ambiance." },
+                  { name: "Dark Luxury", visual: "radial-gradient(circle at 50% 20%, rgba(212,175,55,0.22), transparent 35%), linear-gradient(145deg, #111111, #050505 58%, #2a2117)", desc: "Cinematic black, editorial layout, silver glow.", href: "#" },
+                  { name: "Soft Romance", visual: "radial-gradient(circle at 30% 20%, rgba(255,212,224,0.6), transparent 32%), linear-gradient(145deg, #f7d6dc, #8b5265 58%, #241014)", desc: "Floral, pink atmosphere, romantic composition.", href: "#" },
+                  { name: "Royal Gold", visual: "radial-gradient(circle at 52% 18%, rgba(255,239,184,0.7), transparent 31%), linear-gradient(145deg, #2d1d0d, #9b6a1f 52%, #130b05)", desc: "Opulent gold palette, majestic ambiance.", href: "#" },
+                  { name: "Celestial Royal Gold", visual: "radial-gradient(circle at 50% 16%, rgba(217,185,95,0.42), transparent 30%), radial-gradient(circle at 50% 55%, rgba(80,44,21,0.55), transparent 54%), linear-gradient(160deg, #060403, #100805 58%, #020101)", desc: "Dark celestial editorial mood with sacred gold details.", href: "/themes/celestial_royal_gold" },
                 ].map((theme, i) => (
-                  <div
+                  <Link
                     key={i}
+                    href={theme.href}
                     className="w-[280px] shrink-0 snap-center group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] p-4 transition-all duration-500 hover:border-yellow-500/40"
                   >
                     <div className="relative z-10 flex flex-col items-start text-left">
                       <div className="mb-5 h-[240px] w-full rounded-[20px] overflow-hidden relative">
-                        <img src={theme.img} alt={theme.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                        <div
+                          aria-label={theme.name}
+                          className="h-full w-full transition-transform duration-700 group-hover:scale-105"
+                          style={{ background: theme.visual }}
+                        />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                       </div>
                       <h3 className="playfair text-2xl font-medium leading-tight">
@@ -224,7 +219,7 @@ export default function Home() {
                         {theme.desc}
                       </p>
                     </div>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -232,17 +227,23 @@ export default function Home() {
             {/* Desktop Grid */}
             <div className="hidden sm:grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {[
-                { name: "Dark Luxury", img: "/themes/card-dark-luxury.png", desc: "Cinematic black, editorial layout, silver glow, luxury typography." },
-                { name: "Soft Romance", img: "/themes/card-soft-romance.png", desc: "Floral composition, pink atmosphere, elegant romantic storytelling." },
-                { name: "Royal Gold", img: "/themes/card-royal-gold.png", desc: "Opulent gold palette, majestic ambiance, regal visual direction." },
+                { name: "Dark Luxury", visual: "radial-gradient(circle at 50% 20%, rgba(212,175,55,0.22), transparent 35%), linear-gradient(145deg, #111111, #050505 58%, #2a2117)", desc: "Cinematic black, editorial layout, silver glow, luxury typography.", href: "#" },
+                { name: "Soft Romance", visual: "radial-gradient(circle at 30% 20%, rgba(255,212,224,0.6), transparent 32%), linear-gradient(145deg, #f7d6dc, #8b5265 58%, #241014)", desc: "Floral composition, pink atmosphere, elegant romantic storytelling.", href: "#" },
+                { name: "Royal Gold", visual: "radial-gradient(circle at 52% 18%, rgba(255,239,184,0.7), transparent 31%), linear-gradient(145deg, #2d1d0d, #9b6a1f 52%, #130b05)", desc: "Opulent gold palette, majestic ambiance, regal visual direction.", href: "#" },
+                { name: "Celestial Royal Gold", visual: "radial-gradient(circle at 50% 16%, rgba(217,185,95,0.42), transparent 30%), radial-gradient(circle at 50% 55%, rgba(80,44,21,0.55), transparent 54%), linear-gradient(160deg, #060403, #100805 58%, #020101)", desc: "A sacred dark editorial experience with royal gold glow and refined spacing.", href: "/themes/celestial_royal_gold" },
               ].map((theme) => (
-                <div
+                <Link
                   key={theme.name}
+                  href={theme.href}
                   className="group relative overflow-hidden rounded-[32px] border border-white/10 bg-white/[0.03] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-yellow-500/40"
                 >
                   <div className="relative z-10 flex flex-col items-start text-left">
                     <div className="mb-6 h-[320px] w-full rounded-[24px] overflow-hidden relative">
-                      <img src={theme.img} alt={theme.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                      <div
+                        aria-label={theme.name}
+                        className="h-full w-full transition-transform duration-700 group-hover:scale-105"
+                        style={{ background: theme.visual }}
+                      />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     </div>
                     <h3 className="playfair text-2xl font-medium leading-tight">
@@ -252,7 +253,7 @@ export default function Home() {
                       {theme.desc}
                     </p>
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -410,7 +411,7 @@ export default function Home() {
           <div className="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
             <MagneticButton>
               <Link
-                href="/create"
+                href="#waitlist"
                 className="group relative overflow-hidden inline-block rounded-full border border-yellow-500/40 bg-transparent px-10 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-white transition-all"
               >
                 <span className="relative z-10 transition-colors duration-300 group-hover:text-black">
@@ -424,7 +425,7 @@ export default function Home() {
       </section>
 
       {/* GRAND FINALE FOOTER */}
-      <footer className="relative z-10 border-t border-white/5 bg-black pt-20 pb-12 overflow-hidden">
+      <footer id="waitlist" className="relative z-10 border-t border-white/5 bg-black pt-20 pb-12 overflow-hidden">
         <div className="mx-auto max-w-7xl px-6 flex flex-col items-center">
           <div className="w-full flex flex-col md:flex-row justify-between items-center gap-10 mb-16 md:mb-20">
             <div className="text-center md:text-left">

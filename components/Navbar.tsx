@@ -2,9 +2,11 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,6 +41,10 @@ export default function Navbar() {
     { name: "Blog", href: "/#blog" },
   ];
 
+  if (pathname?.startsWith("/themes/")) {
+    return null;
+  }
+
   return (
     <>
       <motion.nav 
@@ -71,7 +77,7 @@ export default function Navbar() {
         {/* Right: CTA */}
         <div className="flex items-center gap-4 relative z-50">
           <Link 
-            href="/create" 
+            href="/#waitlist" 
             className="hidden sm:inline-block bg-[#E3C290] text-black px-6 py-2.5 rounded-md font-semibold text-sm hover:bg-[#D4AF37] transition-all hover:scale-105 shadow-[0_0_15px_rgba(227,194,144,0.3)]"
           >
             Get Started
